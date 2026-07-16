@@ -1,0 +1,6 @@
+{
+  "name": "Карманный щит",
+  "description": "Обучающий симулятор мобильной кибербезопасности. Отбивайте фишинг, смишинг и QR-мошенничество.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
