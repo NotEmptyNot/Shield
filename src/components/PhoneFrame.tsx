@@ -14,8 +14,7 @@ import {
   X,
   MessageSquare,
   Lock,
-  Compass,
-  ArrowLeft
+  Compass
 } from 'lucide-react';
 
 interface PhoneFrameProps {
@@ -60,9 +59,9 @@ export const PhoneFrame: React.FC<PhoneFrameProps> = ({ children }) => {
   const screenBg = theme === 'dark' ? 'bg-zinc-900 text-zinc-100' : 'bg-slate-50 text-slate-900';
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-[90vh] py-6 px-4">
+    <div className="relative flex flex-col items-center justify-center py-2 px-2">
       {/* Device frame container */}
-      <div className={`relative w-full max-w-[400px] h-[820px] rounded-[55px] border-[12px] ${bezelColor} shadow-2xl transition-all duration-300 flex flex-col overflow-hidden`}>
+      <div className={`relative w-[340px] h-[680px] rounded-[48px] border-[10px] ${bezelColor} shadow-2xl transition-all duration-300 flex flex-col overflow-hidden`}>
         
         {/* Dynamic Island / Camera Notch */}
         <div className="absolute top-2 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-full z-50 flex items-center justify-between px-3">
@@ -201,23 +200,10 @@ export const PhoneFrame: React.FC<PhoneFrameProps> = ({ children }) => {
             </div>
           </div>
         </div>
-
-        {/* Back and Home button helper for desktop preview */}
-        {screen !== 'desktop' && screen !== 'winlocker' && (
-          <div className="absolute bottom-6 left-6 z-40">
-            <button 
-              onClick={() => setScreen('desktop')}
-              className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-black/60 hover:bg-black/80 text-[10px] font-medium text-white backdrop-blur-sm shadow border border-neutral-800 transition-colors"
-            >
-              <ArrowLeft className="w-3 h-3" />
-              <span>Главная</span>
-            </button>
-          </div>
-        )}
       </div>
 
       {/* Frame stand reflection/shadow */}
-      <div className="w-[360px] h-3 bg-neutral-900/10 rounded-full blur-md mt-2"></div>
+      <div className="w-[300px] h-3 bg-neutral-900/10 rounded-full blur-md mt-2"></div>
     </div>
   );
 };

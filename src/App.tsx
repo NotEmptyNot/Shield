@@ -381,14 +381,14 @@ const MainAppContent: React.FC = () => {
             </div>
 
             {/* Center Area: Phone Simulator */}
-            <div className="flex-1 flex flex-col items-center justify-center relative lg:overflow-y-auto no-scrollbar">
+            <div className="flex-1 flex flex-col items-center justify-start relative overflow-y-auto no-scrollbar">
               
               {/* Virtual Glowing lines */}
               <div className="absolute -left-12 top-1/4 w-24 h-px bg-gradient-to-r from-transparent to-indigo-500/20 opacity-40 pointer-events-none hidden lg:block"></div>
               <div className="absolute -right-12 bottom-1/3 w-24 h-px bg-gradient-to-l from-transparent to-emerald-500/20 opacity-40 pointer-events-none hidden lg:block"></div>
               
               {/* The Phone Container */}
-              <div className="w-full flex justify-center py-2 relative z-10 scale-90 md:scale-95 lg:scale-100 transition-transform">
+              <div className="w-full flex justify-center py-2 relative z-10 scale-90 md:scale-95 lg:scale-100 transition-transform my-auto">
                 <PhoneFrame>
                   {renderScreen()}
                 </PhoneFrame>
