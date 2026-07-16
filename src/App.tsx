@@ -92,7 +92,7 @@ const MainAppContent: React.FC = () => {
       status: state.cashbackState === 'pending' ? 'active' :
               state.cashbackState === 'done' ? 'success' : 'neutral',
       desc: 'Push-оповещение от мобильного банка',
-      screen: 'desktop' as const
+      screen: 'bank' as const
     },
     {
       id: 'restaurant',

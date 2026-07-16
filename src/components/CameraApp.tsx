@@ -189,7 +189,7 @@ export const CameraApp: React.FC = () => {
         )}
 
         {/* NATIVE SYSTEM TOOLTIP POPUP (QR Link found) */}
-        {currentStatus === 'scanned' && (
+        {(currentStatus === 'scanned' || currentStatus === 'clicked_link') && (
           <div className="absolute bottom-20 inset-x-4 bg-zinc-900 border-[1.5px] border-amber-500/40 rounded-2xl p-4 shadow-2xl z-40 animate-fade-in text-left">
             <div className="flex items-start gap-3">
               <div className="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500 shrink-0">
@@ -275,7 +275,7 @@ export const CameraApp: React.FC = () => {
         <span className="text-[9px] uppercase tracking-wider text-neutral-500 text-center font-bold">Сменить Локацию Сканирования</span>
         <div className="grid grid-cols-2 gap-2">
           <button 
-            disabled={qrRestaurantState !== 'pending' && qrRestaurantState !== 'scanned'}
+            disabled={qrRestaurantState === 'done' || qrRestaurantState === 'cancelled'}
             onClick={() => switchQrLocation('restaurant')}
             className={`py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1 ${
               qrLocation === 'restaurant' 
@@ -288,7 +288,7 @@ export const CameraApp: React.FC = () => {
           </button>
           
           <button 
-            disabled={qrBusState !== 'pending' && qrBusState !== 'scanned'}
+            disabled={qrBusState === 'done' || qrBusState === 'cancelled'}
             onClick={() => switchQrLocation('bus')}
             className={`py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1 ${
               qrLocation === 'bus' 

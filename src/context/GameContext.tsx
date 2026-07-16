@@ -128,13 +128,14 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     scoreChange: number
   ) => {
     setState(prev => {
-      const newSafety = Math.max(0, Math.min(100, prev.safety + scoreChange));
+      const effectiveChange = scoreChange > 0 ? 0 : scoreChange;
+      const newSafety = Math.max(0, Math.min(100, prev.safety + effectiveChange));
       return {
         ...prev,
         safety: newSafety,
         feedbackLog: [
           ...prev.feedbackLog,
-          { title, description, type, scoreChange },
+          { title, description, type, scoreChange: effectiveChange },
         ],
       };
     });
@@ -148,6 +149,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setState(prev => ({
         ...prev,
         deliveryState: 'clicked_link',
+        activeBrowserTab: 'delivery',
         screen: 'browser',
         notifications: prev.notifications.map(n => n.id === 'delivery' ? { ...n, unread: false } : n),
       }));
@@ -277,7 +279,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (action === 'scan') {
         setState(prev => ({ ...prev, qrRestaurantState: 'scanned' }));
       } else if (action === 'click_link') {
-        setState(prev => ({ ...prev, qrRestaurantState: 'clicked_link' }));
+        setState(prev => ({ ...prev, qrRestaurantState: 'clicked_link', activeBrowserTab: 'restaurant' }));
       } else if (action === 'submit_action') {
         // Penalty: -40% Safety
         addFeedbackLog(
@@ -301,7 +303,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (action === 'scan') {
         setState(prev => ({ ...prev, qrBusState: 'scanned' }));
       } else if (action === 'click_link') {
-        setState(prev => ({ ...prev, qrBusState: 'clicked_link' }));
+        setState(prev => ({ ...prev, qrBusState: 'clicked_link', activeBrowserTab: 'bus' }));
       } else if (action === 'submit_action') {
         // Penalty: -40% Safety
         addFeedbackLog(
@@ -375,6 +377,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       qrRestaurantState: 'pending',
       qrBusState: 'pending',
       feedbackLog: [],
+      activeBrowserTab: undefined,
     });
   };
 

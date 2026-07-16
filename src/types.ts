@@ -45,4 +45,5 @@ export interface GameState {
     type: 'success' | 'warning' | 'danger';
     scoreChange: number;
   }[];
+  activeBrowserTab?: 'delivery' | 'restaurant' | 'bus';
 }
