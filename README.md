@@ -12,8 +12,9 @@
 
 Наличие:  Node.js
 
-
-1. Установить зависимости:
+1. Клонировать репазиторий:
+git clone https://github.com/NotEmptyNot/Shield cd Shield
+2. Установить зависимости:
    `npm install`
-2. Запустить приложение:
+3. Запустить приложение:
    `npm run dev`
